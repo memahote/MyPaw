@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import HorizonCalendar
 
 
 struct CalendarCustomView: View {
