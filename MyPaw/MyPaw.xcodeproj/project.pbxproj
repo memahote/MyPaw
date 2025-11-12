@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		B5A0FF6D2EC49D9C00F86279 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = B5A0FF6C2EC49D9C00F86279 /* HorizonCalendar */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		B8DD27C32EC482AD0043C3B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -56,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A0FF6D2EC49D9C00F86279 /* HorizonCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +112,6 @@
 			);
 			name = MyPaw;
 			packageProductDependencies = (
-				B5A0FF6C2EC49D9C00F86279 /* HorizonCalendar */,
 			);
 			productName = MyPaw;
 			productReference = B8DD27B52EC482AB0043C3B7 /* MyPaw.app */;
@@ -202,7 +196,6 @@
 			mainGroup = B8DD27AC2EC482AB0043C3B7;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				B5A0FF6B2EC49D9C00F86279 /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8DD27B62EC482AB0043C3B7 /* Products */;
@@ -579,25 +572,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B5A0FF6B2EC49D9C00F86279 /* XCRemoteSwiftPackageReference "HorizonCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/HorizonCalendar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B5A0FF6C2EC49D9C00F86279 /* HorizonCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B5A0FF6B2EC49D9C00F86279 /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
-			productName = HorizonCalendar;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8DD27AD2EC482AB0043C3B7 /* Project object */;
 }

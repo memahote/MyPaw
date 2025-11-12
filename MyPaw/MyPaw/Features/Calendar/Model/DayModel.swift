@@ -10,5 +10,5 @@ import Foundation
 struct DayModel: Codable, Identifiable {
     var id: UUID
     var date: Date
-    var event: String
+    var event: [String]
 }
