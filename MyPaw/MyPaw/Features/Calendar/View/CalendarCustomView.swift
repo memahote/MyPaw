@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import HorizonCalendar
-
 
 struct CalendarCustomView: View {
     @State private var month = Date()

@@ -1,5 +1,5 @@
 //
-//  OnboardingPage2.swift
+//  OnboardingPage5.swift
 //  MyPaw
 //
 //  Created by Mounir Emahoten on 12/11/2025.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct OnboardingPage2: View {
+struct OnboardingPage5: View {
     @State var onboardinVM = OnboardingViewmodel()
-    
+
     var body: some View {
         ZStack{
             Color(.darkBrown)
@@ -17,39 +17,23 @@ struct OnboardingPage2: View {
             
             VStack {
                 
-                Text("Quelques info en plus")
+                Text("Deux petite question pour finir")
                     .font(.system(size: 22))
                     .foregroundStyle(.orangeDeep)
                 
                 Spacer()
                 VStack(spacing: 45){
-                    VStack(alignment: .leading){
-                        Text("Sexe")
+                    VStack(alignment: .center){
+                        Text("Votre animal suit-il un traitement ?")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
                         Picker(selection: $onboardinVM.profile.sexe, label: Text("")){
-                            Text("Male")
-                            Text("Female")
+                            Text("Oui")
+                            Text("Non")
                         }.pickerStyle(.segmented)
 
                     }
                     
-                    
-                    VStack(alignment: .leading){
-                        Text("Poids")
-                            .font(.system(size: 22))
-                            .foregroundStyle(.orangeDeep)
-                        TextField("17kg", text: $onboardinVM.profile.species)
-                            .textFieldStyle(.roundedBorder)
-                    }
-                    
-                    VStack(alignment: .leading){
-                        Text("N° Puce")
-                            .font(.system(size: 22))
-                            .foregroundStyle(.orangeDeep)
-                        TextField("645372998463-36645672", text: $onboardinVM.profile.breed)
-                            .textFieldStyle(.roundedBorder)
-                    }
                 }
                 .padding()
                 
@@ -69,5 +53,5 @@ struct OnboardingPage2: View {
 }
 
 #Preview {
-    OnboardingPage2()
+    OnboardingPage5()
 }

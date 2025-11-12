@@ -12,22 +12,22 @@ struct OnboardingPage4: View {
 
     var body: some View {
         ZStack{
-            Color.brown
+            Color(.darkBrown)
                 .ignoresSafeArea()
             
             VStack {
                 
                 Text("Deux petite question pour finir")
                     .font(.system(size: 22))
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(.orangeDeep)
                 
                 Spacer()
                 VStack(spacing: 45){
                     VStack(alignment: .center){
-                        Text("Votre animale est-t-il stériliser ?")
+                        Text("Votre animal est-t-il stériliser ?")
                             .font(.system(size: 22))
-                            .foregroundStyle(.orange)
-                        Picker(selection: $onboardinVM.profile.sexe, label: Text("")){
+                            .foregroundStyle(.orangeDeep)
+                        Picker(selection: $onboardinVM.profile.isSterilized, label: Text("")){
                             Text("Oui")
                             Text("Non")
                         }.pickerStyle(.segmented)
@@ -38,6 +38,9 @@ struct OnboardingPage4: View {
                 .padding()
                 
                 Spacer()
+                
+                //Valeur a changer
+                ProgressBar(progress: 0.5)
                 
                 HStack{
                     Spacer()

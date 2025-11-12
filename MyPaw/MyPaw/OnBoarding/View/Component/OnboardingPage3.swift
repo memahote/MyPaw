@@ -12,21 +12,21 @@ struct OnboardingPage3: View {
 
     var body: some View {
         ZStack{
-            Color.brown
+            Color(.darkBrown)
                 .ignoresSafeArea()
             
             VStack {
                 
                 Text("Quelques dates clés")
                     .font(.system(size: 22))
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(.orangeDeep)
                 
                 Spacer()
                 VStack(spacing: 65){
                     VStack(alignment: .leading){
                         Text("Date de naissance")
                             .font(.system(size: 22))
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(.orangeDeep)
                         DatePicker(selection: $onboardinVM.profile.birthDate, in: ...Date(), displayedComponents: .date){
                             Text("Selectionnez une date :")
                                 .foregroundStyle(.white)
@@ -38,7 +38,7 @@ struct OnboardingPage3: View {
                     VStack(alignment: .leading){
                         Text("Date du dernier vaccin")
                             .font(.system(size: 22))
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(.orangeDeep)
                         DatePicker(selection: $onboardinVM.profile.lastVaccineDate, in: ...Date(), displayedComponents: .date){
                             Text("Selectionnez une date :")
                                 .foregroundStyle(.white)
@@ -49,6 +49,9 @@ struct OnboardingPage3: View {
                 .padding()
                 
                 Spacer()
+                
+                //Valeur a changer
+                ProgressBar(progress: 0.5)
                 
                 HStack{
                     Spacer()

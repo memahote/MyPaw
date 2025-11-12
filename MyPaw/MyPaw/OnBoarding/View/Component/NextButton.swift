@@ -16,10 +16,11 @@ struct NextButton: View {
                 .frame(width: 115, height: 45)
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(.orangeMid)
                 )
                 
         }
+        .frame(height: 55)
 
     }
 }
