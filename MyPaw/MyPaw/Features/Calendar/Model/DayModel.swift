@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct DayModel: Codable, Identifiable {
+struct DayModel: Identifiable {
     var id: UUID
     var date: Date
-    var event: [String]
+    var event: [Event]
 }
