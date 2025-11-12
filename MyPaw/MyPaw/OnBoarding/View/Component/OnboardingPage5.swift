@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct OnboardingPage5: View {
-    @State var onboardinVM = OnboardingViewmodel()
-
+    @Binding var onboardingVM : OnboardingViewmodel
+    var onFinish: () -> Void
+    
     var body: some View {
         ZStack{
             Color(.darkBrown)
                 .ignoresSafeArea()
             
             VStack {
-                
-                Text("Deux petite question pour finir")
+                Spacer()
+                Text("Dernière petite question 🤔")
                     .font(.system(size: 22))
                     .foregroundStyle(.orangeDeep)
                 
@@ -27,11 +28,26 @@ struct OnboardingPage5: View {
                         Text("Votre animal suit-il un traitement ?")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
-                        Picker(selection: $onboardinVM.profile.sexe, label: Text("")){
-                            Text("Oui")
-                            Text("Non")
-                        }.pickerStyle(.segmented)
-
+                        Picker(selection: $onboardingVM.profile.isFollowingTreatment, label: Text("")){
+                            Text("Oui").tag(true)
+                            Text("Non").tag(false)
+                        }
+                        .pickerStyle(.segmented)
+                        .background(.white)
+                        .cornerRadius(10)
+                        
+                    }
+                    
+                    if onboardingVM.profile.isFollowingTreatment {
+                        VStack(alignment: .leading, spacing: 10){
+                            Text("Quel traitement ?")
+                                .font(.system(size: 18))
+                                .foregroundStyle(.orangeDeep)
+                            
+                            TextField("Nom du traitement", text: $onboardingVM.profile.currentTreatment)
+                                .textFieldStyle(.roundedBorder)
+                                .frame(width: 285, height: 35)
+                        }
                     }
                     
                 }
@@ -39,19 +55,29 @@ struct OnboardingPage5: View {
                 
                 Spacer()
                 
-                //Valeur a changer
-                ProgressBar(progress: 0.5)
-                
-                HStack{
-                    Spacer()
-                    NextButton(onJoin: {})
+                VStack {
+                    ProgressBar(progress: CGFloat(onboardingVM.currentPage + 1) / 5.0)
+                      
+                    
+                    HStack{
+                        NextButton(text: "Précédent") {
+                            onboardingVM.previousPage()
+                        }
+                        Spacer()
+                        NextButton(text: "Terminer") {
+                            onFinish()
+                        }
+                        .disabled(!onboardingVM.isPage5Valid)
+                        .opacity(onboardingVM.isPage5Valid ? 1 : 0.5)
+                    }
+                    .padding()
+              
                 }
-                .padding()
             }
         }
     }
 }
 
 #Preview {
-    OnboardingPage5()
+    OnboardingPage5(onboardingVM: .constant(OnboardingViewmodel()), onFinish: {})
 }

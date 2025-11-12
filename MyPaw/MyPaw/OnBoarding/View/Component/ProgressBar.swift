@@ -12,14 +12,15 @@ struct ProgressBar: View {
     
     var body: some View {
         
-        VStack (spacing: -20){
+        VStack (){
             HStack {
                 Spacer()
                 Image("kiki")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 75)
+                    .scaledToFill()
+                    .frame(width: 100, height: 75)
                     .padding(.horizontal)
+                   
             }
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
@@ -42,8 +43,7 @@ struct ProgressBar: View {
             
             
         }
-        .frame(height: 200)
-        
+        .frame(height: 125)
     }
     
     

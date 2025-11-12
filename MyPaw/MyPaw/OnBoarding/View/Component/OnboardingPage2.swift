@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingPage2: View {
-    @State var onboardinVM = OnboardingViewmodel()
+    @Binding var onboardingVM : OnboardingViewmodel
     
     var body: some View {
         ZStack{
@@ -16,10 +16,11 @@ struct OnboardingPage2: View {
                 .ignoresSafeArea()
             
             VStack {
-                
+                Spacer()
                 Text("Quelques info en plus")
                     .font(.system(size: 22))
                     .foregroundStyle(.orangeDeep)
+                    .padding(.top, 50)
                 
                 Spacer()
                 VStack(spacing: 45){
@@ -27,11 +28,15 @@ struct OnboardingPage2: View {
                         Text("Sexe")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
-                        Picker(selection: $onboardinVM.profile.sexe, label: Text("")){
-                            Text("Male")
-                            Text("Female")
-                        }.pickerStyle(.segmented)
+                        Picker(selection: $onboardingVM.profile.sexe, label: Text("")){
+                            Text("Mâle").tag("Mâle")
+                            Text("Femelle").tag("Femelle")
+                        }
+                        .pickerStyle(.segmented)
+                        .background(.white)
+                        .cornerRadius(25)
 
+                        
                     }
                     
                     
@@ -39,15 +44,16 @@ struct OnboardingPage2: View {
                         Text("Poids")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
-                        TextField("17kg", text: $onboardinVM.profile.species)
+                        TextField("17kg", value: $onboardingVM.profile.weight, format: .number)
                             .textFieldStyle(.roundedBorder)
+                            .keyboardType(.decimalPad)
                     }
                     
                     VStack(alignment: .leading){
                         Text("N° Puce")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
-                        TextField("645372998463-36645672", text: $onboardinVM.profile.breed)
+                        TextField("645372998463-36645672", text: $onboardingVM.profile.microchip)
                             .textFieldStyle(.roundedBorder)
                     }
                 }
@@ -55,19 +61,31 @@ struct OnboardingPage2: View {
                 
                 Spacer()
                 
-                //Valeur a changer
-                ProgressBar(progress: 0.5)
-                
-                HStack{
-                    Spacer()
-                    NextButton(onJoin: {})
+                VStack {
+                    ProgressBar(progress: CGFloat(onboardingVM.currentPage + 1) / 5.0)
+                    
+                    
+                    HStack{
+                        NextButton(text: "Précédent") {
+                            onboardingVM.previousPage()
+                        }
+                        Spacer()
+                        NextButton {
+                            if (onboardingVM.currentPage < 4) {
+                                onboardingVM.nextPage()
+                            }
+                        }
+                        .disabled(!onboardingVM.isPage2Valid)
+                        .opacity(onboardingVM.isPage2Valid ? 1 : 0.5)
+                    }
+                    .padding()
+                    
                 }
-                .padding()
             }
         }
     }
 }
 
 #Preview {
-    OnboardingPage2()
+    OnboardingPage2(onboardingVM: .constant(OnboardingViewmodel()))
 }

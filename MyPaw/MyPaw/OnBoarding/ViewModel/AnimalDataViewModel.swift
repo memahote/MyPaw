@@ -1,5 +1,5 @@
 //
-//  UserDataViewModel.swift
+//  AnimalDataViewModel.swift
 //  MyPaw
 //
 //  Created by Mounir Emahoten on 12/11/2025.
@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class UserDataViewModel {
+class AnimalDataViewModel {
     var animals : [AnimalProfile] = []
     
     func addAnimal(animal : AnimalProfile){

@@ -8,30 +8,34 @@
 import SwiftUI
 
 struct OnboardingPage4: View {
-    @State var onboardinVM = OnboardingViewmodel()
-
+    @Binding var onboardingVM : OnboardingViewmodel
+    
     var body: some View {
         ZStack{
             Color(.darkBrown)
                 .ignoresSafeArea()
             
             VStack {
-                
-                Text("Deux petite question pour finir")
+                Spacer()
+                Text("Encore un petit effort pour votre animal !")
                     .font(.system(size: 22))
                     .foregroundStyle(.orangeDeep)
+                    
                 
                 Spacer()
                 VStack(spacing: 45){
                     VStack(alignment: .center){
-                        Text("Votre animal est-t-il stériliser ?")
+                        Text("Votre animal est-t-il stérilisé ?")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
-                        Picker(selection: $onboardinVM.profile.isSterilized, label: Text("")){
-                            Text("Oui")
-                            Text("Non")
-                        }.pickerStyle(.segmented)
-
+                        Picker(selection: $onboardingVM.profile.isSterilized, label: Text("")){
+                            Text("Oui").tag(true)
+                            Text("Non").tag(false)
+                        }
+                        .pickerStyle(.segmented)
+                        .background(.white)
+                        .cornerRadius(10)
+                        
                     }
                     
                 }
@@ -39,19 +43,29 @@ struct OnboardingPage4: View {
                 
                 Spacer()
                 
-                //Valeur a changer
-                ProgressBar(progress: 0.5)
-                
-                HStack{
-                    Spacer()
-                    NextButton(onJoin: {})
+                VStack {
+                    ProgressBar(progress: CGFloat(onboardingVM.currentPage + 1) / 5.0)
+                      
+                    
+                    HStack{
+                        NextButton(text: "Précédent") {
+                            onboardingVM.previousPage()
+                        }
+                        Spacer()
+                        NextButton {
+                            if (onboardingVM.currentPage < 4) {
+                                onboardingVM.nextPage()
+                            }
+                        }
+                    }
+                    .padding()
+              
                 }
-                .padding()
             }
         }
     }
 }
 
 #Preview {
-    OnboardingPage4()
+    OnboardingPage4(onboardingVM: .constant(OnboardingViewmodel()))
 }

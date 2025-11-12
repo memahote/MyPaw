@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct NextButton: View {
+    let text: String
     let onJoin: () -> Void
+    
+    init(text: String = "Suivant", onJoin: @escaping () -> Void) {
+        self.text = text
+        self.onJoin = onJoin
+    }
+    
     var body: some View {
         Button (action: onJoin) {
-            Text("Suivant")
+            Text(text)
                 .foregroundStyle(.white)
                 .frame(width: 115, height: 45)
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundStyle(.orangeMid)
                 )
-                
         }
         .frame(height: 55)
-
     }
 }
-
 #Preview {
     NextButton(onJoin: { })
 }

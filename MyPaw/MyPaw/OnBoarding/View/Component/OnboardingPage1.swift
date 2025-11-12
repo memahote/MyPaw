@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingPage1: View {
-    @State var onboardinVM = OnboardingViewmodel()
+    @Binding var onboardingVM : OnboardingViewmodel
     
     var body: some View {
         ZStack{
@@ -16,10 +16,12 @@ struct OnboardingPage1: View {
                 .ignoresSafeArea()
             
             VStack {
-                
+                Spacer()
                 Text("On apprend à vous connaître")
                     .font(.system(size: 22))
                     .foregroundStyle(.orangeDeep)
+                    
+                    
                 
                 Spacer()
                 VStack(spacing: 45){
@@ -27,7 +29,7 @@ struct OnboardingPage1: View {
                         Text("Nom")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
-                        TextField("Clover", text: $onboardinVM.profile.name)
+                        TextField("Clover", text: $onboardingVM.profile.name)
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 285, height: 35)
                     }
@@ -37,7 +39,7 @@ struct OnboardingPage1: View {
                         Text("Espèce")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
-                        TextField("Chat", text: $onboardinVM.profile.species)
+                        TextField("Chat", text: $onboardingVM.profile.species)
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 285, height: 35)
                     }
@@ -46,27 +48,35 @@ struct OnboardingPage1: View {
                         Text("Race")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
-                        TextField("Européen", text: $onboardinVM.profile.breed)
+                        TextField("Européen", text: $onboardingVM.profile.breed)
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 285, height: 35)
                     }
                 }
                 .padding()
                 
-               Spacer()
-                //Valeur a changer
-                ProgressBar(progress: 0.5)
-                
-                HStack{
-                    Spacer()
-                    NextButton(onJoin: {})
+                Spacer()
+               
+                VStack {
+                    ProgressBar(progress: CGFloat(onboardingVM.currentPage + 1) / 5.0)
+                      
+                    
+                    HStack{
+                        Spacer()
+                        NextButton {
+                                onboardingVM.nextPage()
+                        }
+                        .disabled(!onboardingVM.isPage1Valid)
+                        .opacity(onboardingVM.isPage1Valid ? 1 : 0.5)
+                    }
+                    .padding()
+              
                 }
-                .padding()
             }
         }
     }
 }
 
 #Preview {
-    OnboardingPage1()
+    OnboardingPage1(onboardingVM: .constant(OnboardingViewmodel()))
 }

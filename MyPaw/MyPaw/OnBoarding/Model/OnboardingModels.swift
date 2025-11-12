@@ -15,9 +15,10 @@ struct AnimalProfile: Identifiable, Codable {
     var breed: String = ""
     var sexe: String = ""
     var weight: Double = 0.0
-    var microchip: String? = ""
+    var microchip: String = ""
     var birthDate: Date = Date()
     var lastVaccineDate: Date = Date()
     var isSterilized: Bool = false
-    var currentTreatment: String? = ""
+    var isFollowingTreatment: Bool = false
+    var currentTreatment: String = ""
 }
