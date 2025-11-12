@@ -18,7 +18,7 @@ struct OnboardingPage3: View {
             VStack {
                 Spacer()
                 Text("Quelques dates clés")
-                    .font(.system(size: 22))
+                    .font(.system(size: 26))
                     .foregroundStyle(.orangeDeep)
                     .padding(.top, 50)
                 

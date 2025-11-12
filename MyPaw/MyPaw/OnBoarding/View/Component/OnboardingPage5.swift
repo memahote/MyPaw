@@ -19,7 +19,7 @@ struct OnboardingPage5: View {
             VStack {
                 Spacer()
                 Text("Dernière petite question 🤔")
-                    .font(.system(size: 22))
+                    .font(.system(size: 26))
                     .foregroundStyle(.orangeDeep)
                 
                 Spacer()

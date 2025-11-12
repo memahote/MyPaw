@@ -12,16 +12,24 @@ struct OnboardingPage1: View {
     
     var body: some View {
         ZStack{
+            
+            
+            Image("imgOnboarding1")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
             Color(.darkBrown)
+                .opacity(0.9)
                 .ignoresSafeArea()
             
             VStack {
                 Spacer()
                 Text("On apprend à vous connaître")
-                    .font(.system(size: 22))
+                    .font(.system(size: 26))
                     .foregroundStyle(.orangeDeep)
-                    
-                    
+                
+                
                 
                 Spacer()
                 VStack(spacing: 45){
@@ -56,26 +64,27 @@ struct OnboardingPage1: View {
                 .padding()
                 
                 Spacer()
-               
+                
                 VStack {
                     ProgressBar(progress: CGFloat(onboardingVM.currentPage + 1) / 5.0)
-                      
+                    
                     
                     HStack{
                         Spacer()
                         NextButton {
-                                onboardingVM.nextPage()
+                            onboardingVM.nextPage()
                         }
                         .disabled(!onboardingVM.isPage1Valid)
                         .opacity(onboardingVM.isPage1Valid ? 1 : 0.5)
                     }
                     .padding()
-              
+                    
                 }
             }
         }
     }
 }
+
 
 #Preview {
     OnboardingPage1(onboardingVM: .constant(OnboardingViewmodel()))

@@ -18,7 +18,7 @@ struct OnboardingPage2: View {
             VStack {
                 Spacer()
                 Text("Quelques info en plus")
-                    .font(.system(size: 22))
+                    .font(.system(size: 26))
                     .foregroundStyle(.orangeDeep)
                     .padding(.top, 50)
                 

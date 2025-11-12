@@ -18,7 +18,7 @@ struct OnboardingPage4: View {
             VStack {
                 Spacer()
                 Text("Encore un petit effort pour votre animal !")
-                    .font(.system(size: 22))
+                    .font(.system(size: 26))
                     .foregroundStyle(.orangeDeep)
                     
                 
