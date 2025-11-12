@@ -176,21 +176,17 @@ private struct DayCell: View {
         Group {
             if hasEvent, let d = day {
                 Button(action: onSelect) {
-//                    AsyncImage(url: url) { phase in
-//                        switch phase {
-//                        case .success(let img):
-//                            img
-//                                .resizable()
-//                                .scaledToFit()
-//                                .clipShape(Circle())
-//                        default:
-//                            ProgressView()
-//                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                        }
-//                    }
+
                     ZStack {
+                        
+                        
                         Circle().fill(Color.darkBrown)
-                            
+                        if isToday {
+                            Circle()
+                                .inset(by: -3)
+                                .strokeBorder(.orangeDeep,lineWidth: 1)
+                                
+                        }
                            
                         Text(String(calendar.component(.day, from: date)))
                             .font(.system(size: 16))
@@ -203,10 +199,14 @@ private struct DayCell: View {
             }  else {
                 Button(action: onSelect) {
                     ZStack {
-//                        if isPast {
-//                            Circle().strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [4,4]))
-//                        }
+                       
                         Circle().fill(Color.orangeMid.opacity(0.5))
+                        if isToday {
+                            Circle()
+                                .inset(by: -3)
+                                .strokeBorder(.orangeDeep,lineWidth: 1)
+                                
+                        }
                         Text(String(calendar.component(.day, from: date)))
                             .font(.system(size: 16))
                             .bold()
@@ -219,5 +219,6 @@ private struct DayCell: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
         .foregroundStyle(.whiteDirt)
+     
     }
 }
