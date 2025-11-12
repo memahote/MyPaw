@@ -12,8 +12,7 @@ struct OnboardingPage1: View {
     
     var body: some View {
         ZStack{
-            
-            
+  
             Image("imgOnboarding1")
                 .resizable()
                 .scaledToFill()
@@ -28,8 +27,7 @@ struct OnboardingPage1: View {
                 Text("On apprend à vous connaître")
                     .font(.system(size: 26))
                     .foregroundStyle(.orangeDeep)
-                
-                
+ 
                 
                 Spacer()
                 VStack(spacing: 45){
@@ -37,6 +35,7 @@ struct OnboardingPage1: View {
                         Text("Nom")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
+
                         TextField("Clover", text: $onboardingVM.profile.name)
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 285, height: 35)
@@ -47,6 +46,7 @@ struct OnboardingPage1: View {
                         Text("Espèce")
                             .font(.system(size: 22))
                             .foregroundStyle(.orangeDeep)
+                        
                         TextField("Chat", text: $onboardingVM.profile.species)
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 285, height: 35)
@@ -63,7 +63,9 @@ struct OnboardingPage1: View {
                 }
                 .padding()
                 
-                Spacer()
+               Spacer()
+                //Valeur a changer
+                ProgressBar(progress: 0.5)
                 
                 VStack {
                     ProgressBar(progress: CGFloat(onboardingVM.currentPage + 1) / 5.0)

@@ -20,7 +20,7 @@ struct ProgressBar: View {
                     .scaledToFill()
                     .frame(width: 100, height: 75)
                     .padding(.horizontal)
-                   
+
             }
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
@@ -44,6 +44,7 @@ struct ProgressBar: View {
             
         }
         .frame(height: 125)
+
     }
     
     

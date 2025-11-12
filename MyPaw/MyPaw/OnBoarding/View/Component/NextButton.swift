@@ -27,6 +27,7 @@ struct NextButton: View {
                 )
         }
         .frame(height: 55)
+
     }
 }
 #Preview {

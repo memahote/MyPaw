@@ -21,6 +21,7 @@ struct OnboardingPage2: View {
                     .font(.system(size: 26))
                     .foregroundStyle(.orangeDeep)
                     .padding(.top, 50)
+
                 
                 Spacer()
                 VStack(spacing: 45){
@@ -35,6 +36,7 @@ struct OnboardingPage2: View {
                         .pickerStyle(.segmented)
                         .background(.white)
                         .cornerRadius(25)
+
 
                         
                     }
@@ -79,7 +81,7 @@ struct OnboardingPage2: View {
                         .opacity(onboardingVM.isPage2Valid ? 1 : 0.5)
                     }
                     .padding()
-                    
+
                 }
             }
         }

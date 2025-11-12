@@ -20,7 +20,7 @@ struct OnboardingPage4: View {
                 Text("Encore un petit effort pour votre animal !")
                     .font(.system(size: 26))
                     .foregroundStyle(.orangeDeep)
-                    
+
                 
                 Spacer()
                 VStack(spacing: 45){
@@ -35,7 +35,7 @@ struct OnboardingPage4: View {
                         .pickerStyle(.segmented)
                         .background(.white)
                         .cornerRadius(10)
-                        
+
                     }
                     
                 }
@@ -59,7 +59,7 @@ struct OnboardingPage4: View {
                         }
                     }
                     .padding()
-              
+
                 }
             }
         }

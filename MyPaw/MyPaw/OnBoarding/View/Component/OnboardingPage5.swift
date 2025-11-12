@@ -10,7 +10,7 @@ import SwiftUI
 struct OnboardingPage5: View {
     @Binding var onboardingVM : OnboardingViewmodel
     var onFinish: () -> Void
-    
+ 
     var body: some View {
         ZStack{
             Color(.darkBrown)
@@ -48,6 +48,7 @@ struct OnboardingPage5: View {
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: 285, height: 35)
                         }
+
                     }
                     
                 }
@@ -73,6 +74,7 @@ struct OnboardingPage5: View {
                     .padding()
               
                 }
+=
             }
         }
     }
@@ -80,4 +82,5 @@ struct OnboardingPage5: View {
 
 #Preview {
     OnboardingPage5(onboardingVM: .constant(OnboardingViewmodel()), onFinish: {})
+
 }
