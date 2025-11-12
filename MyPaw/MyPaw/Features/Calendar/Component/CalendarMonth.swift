@@ -48,7 +48,7 @@ struct CalendarMonth: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 0) {
             //MARK: - Header
             
             //si temps : faire en sorte qu'on puisse le drag plutôt que de devoir appuyer sur des boutons
@@ -73,6 +73,45 @@ struct CalendarMonth: View {
             .foregroundStyle(.black)
             .padding(.horizontal)
             
+            
+            HStack{
+                Image(.kiki)
+                    .resizable()
+                    .scaledToFit()
+                    
+                    
+                ZStack{
+                    Image(.bulleMessage)
+                        .offset(x:-40, y:-5)
+
+                    Text("Changez régulièrement l’eau de votre animal et surveillez son appétit : c’est un bon indicateur de son bien-être.")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.whiteDirt)
+                        .frame(width: 150)
+                        .offset(y:-5)
+                    
+                            
+                }
+            }
+            .padding()
+            .offset(x:40)
+            
+            
+            HStack{
+                Spacer()
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "info.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .foregroundStyle(.orangeMid)
+                        .padding()
+                })
+                
+                    
+            }
             //MARK: - Weekday row
             HStack {
                 ForEach(weekdaySymbols(), id: \.self) { s in
@@ -81,9 +120,10 @@ struct CalendarMonth: View {
                         .frame(maxWidth: .infinity)
                 }
             }
+            .padding(.vertical)
             
             //MARK: -  Grid
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 7), spacing: 12) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 7), spacing: 20) {
                 ForEach(daysGrid.indices, id: \.self) { i in
                     if let date = daysGrid[i] {
                         DayCell(
@@ -136,37 +176,41 @@ private struct DayCell: View {
         Group {
             if hasEvent, let d = day {
                 Button(action: onSelect) {
-//                    AsyncImage(url: url) { phase in
-//                        switch phase {
-//                        case .success(let img):
-//                            img
-//                                .resizable()
-//                                .scaledToFit()
-//                                .clipShape(Circle())
-//                        default:
-//                            ProgressView()
-//                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                        }
-//                    }
-                    Image(systemName: "person.fill")
-                }
-                .buttonStyle(.plain)
-            } else if isToday {
-                Button(action: onAddTodayMood) {
+
                     ZStack {
-                        Circle().strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [4,4]))
-                        Text("+").font(.system(size: 18, weight: .bold))
+                        
+                        
+                        Circle().fill(Color.darkBrown)
+                        if isToday {
+                            Circle()
+                                .inset(by: -3)
+                                .strokeBorder(.orangeDeep,lineWidth: 1)
+                                
+                        }
+                           
+                        Text(String(calendar.component(.day, from: date)))
+                            .font(.system(size: 16))
+                            .padding(15)
+                            
                     }
+                    
                 }
                 .buttonStyle(.plain)
-            } else {
+            }  else {
                 Button(action: onSelect) {
                     ZStack {
-                        if isPast {
-                            Circle().strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [4,4]))
+                       
+                        Circle().fill(Color.orangeMid.opacity(0.5))
+                        if isToday {
+                            Circle()
+                                .inset(by: -3)
+                                .strokeBorder(.orangeDeep,lineWidth: 1)
+                                
                         }
                         Text(String(calendar.component(.day, from: date)))
                             .font(.system(size: 16))
+                            .bold()
+                            .padding(15)
                     }
                 }
                 .buttonStyle(.plain)
@@ -174,5 +218,7 @@ private struct DayCell: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
+        .foregroundStyle(.whiteDirt)
+     
     }
 }
