@@ -9,10 +9,8 @@ struct YukaScannerView: View {
             ZStack {
                 // Caméra plein écran
                 ScannerView(viewModel: viewModel)
-                    .ignoresSafeArea()          // ignore les safe areas
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)  // prend tout l’espace
-                    .background(Color.black)    // évite les flash blancs
-
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black)
 
                 // Overlay du code
                 if let code = viewModel.lastScannedCode {
@@ -25,24 +23,23 @@ struct YukaScannerView: View {
                     }
                 }
             }
-            .background(Color.darkBrown)
+            .ignoresSafeArea(.all)
+            .navigationBarHidden(true)
             .navigationDestination(isPresented: Binding(
                 get: { viewModel.navigateTo != nil },
                 set: { if !$0 { viewModel.navigateTo = nil } }
             )) {
                 if viewModel.navigateTo == "catz" {
-                    Text("Page Catz Fine Food 🐱")
+                    catzFineFood()
                 } else if viewModel.navigateTo == "meatz" {
                     MeatzView()
                 }
             }
-
         }
-        
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
     YukaScannerView(viewModel: ScannerViewModel())
-    
 }

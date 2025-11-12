@@ -15,22 +15,12 @@ class ScannerViewModel: ObservableObject {
     @Published var lastScannedCode: String?
     @Published var navigateTo: String?
 
-    // Pour DataScannerViewController
-    func handleScan(_ item: RecognizedItem) {
-        if case .barcode(let barcode) = item {
-            lastScannedCode = barcode.payloadStringValue
-            print("Code scanné (DSC) : \(lastScannedCode ?? "")")
-        }
-    }
-
-    // Pour AVFoundation
     func handleScan(_ code: String) {
         lastScannedCode = code
-        print("Code scanné (AVF) : \(code)")
+        print("Code scanné : \(code)")
         processNavigation(for: code)
     }
-    
-    // Logique de navigation centralisée
+
     private func processNavigation(for code: String) {
         switch code {
         case "4260379446977":
@@ -41,5 +31,4 @@ class ScannerViewModel: ObservableObject {
             navigateTo = nil
         }
     }
-
 }
