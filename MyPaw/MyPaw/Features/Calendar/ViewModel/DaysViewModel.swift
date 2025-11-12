@@ -9,7 +9,7 @@ import Foundation
 
 @Observable
 class DaysViewModel {
-    var days: [DayModel] = [DayModel(id: UUID(), date: dateFromString("2025-11-19"), event: [Event(title: "Vaccin", type: .vaccins, animal: Animal(name: "Kiki", sexe: "Femelle", sterelised: false, espece: "Chat", race: "Européen"))]), DayModel(id: UUID(), date: Date.now.addingTimeInterval(83400), event: [])]
+    var days: [DayModel] = [DayModel(id: UUID(), date: dateFromString("2025-11-19"), event: [Event(title: "Vaccin", type: .vaccins, animal: [AnimalProfile(name: "Clover")])]), DayModel(id: UUID(), date: dateFromString("2025-11-12"), event: [Event(title: "Visite à Simplon", type: .autre, animal: [AnimalProfile(name: "Clover"), AnimalProfile(name: "Sam"), AnimalProfile(name: "Alex")])]), DayModel(id: UUID(), date: dateFromString("2025-12-10"), event: [Event(title: "Vermifuge", type: .medicaments, animal: [AnimalProfile(name:"Clover"), AnimalProfile(name:"Sam"), AnimalProfile(name: "Alex")])])]
     
     func day(for date: Date) -> DayModel? {
             let cal = Calendar.current
