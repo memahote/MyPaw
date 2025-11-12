@@ -59,9 +59,9 @@ struct CalendarMonth: View {
                 Spacer()
                 VStack{
                     Text(monthTitle)
-                        .font(.system(size: 17, weight: .semibold))
+                        .font(.system(size: 22, weight: .semibold))
                     Text(yearTitle)
-                        .font(.system(size: 17, weight: .semibold))
+                        .font(.system(size: 22, weight: .semibold))
                     
                 }
                 Spacer()
@@ -129,7 +129,7 @@ private struct DayCell: View {
     }
     private var hasEvent: Bool {
         guard let d = day else { return false }
-        return !d.event.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        return !d.event.isEmpty
     }
     
     var body: some View {
