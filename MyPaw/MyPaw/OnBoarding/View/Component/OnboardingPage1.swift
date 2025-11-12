@@ -12,11 +12,11 @@ struct OnboardingPage1: View {
     
     var body: some View {
         ZStack{
-  
-            Image("imgOnboarding1")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+
+//            Image("imgOnboarding1")
+//                .resizable()
+//                .scaledToFill()
+//                .ignoresSafeArea()
             
             Color(.darkBrown)
                 .opacity(0.9)
