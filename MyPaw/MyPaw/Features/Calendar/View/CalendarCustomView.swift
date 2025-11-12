@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct CalendarCustomView: View {
     @State private var month = Date()
     @State private var selectedDate: Date?
