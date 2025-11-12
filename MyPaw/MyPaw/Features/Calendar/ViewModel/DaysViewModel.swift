@@ -9,7 +9,7 @@ import Foundation
 
 @Observable
 class DaysViewModel {
-    var days: [DayModel] = [DayModel(id: UUID(), date: Date.now, event: ["Essaie"])]
+    var days: [DayModel] = [DayModel(id: UUID(), date: Date.now, event: ["Essaie"]), DayModel(id: UUID(), date: Date.now.addingTimeInterval(83400), event: [])]
     
     func day(for date: Date) -> DayModel? {
             let cal = Calendar.current
