@@ -74,7 +74,7 @@ struct OnboardingPage5: View {
                     .padding()
               
                 }
-=
+
             }
         }
     }
