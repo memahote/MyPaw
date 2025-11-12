@@ -13,7 +13,7 @@ struct CalendarMonth: View {
     var dayFor: (Date) -> DayModel?
     var onSelect: (Date) -> Void = { _ in }
     var onAddTodayMood: () -> Void = {}
-    
+    @State var selectedDate: Date? = Date.now
     @Environment(\.calendar) private var calendar
     @Environment(\.locale) private var locale
     
@@ -112,31 +112,75 @@ struct CalendarMonth: View {
                 
                     
             }
-            //MARK: - Weekday row
-            HStack {
-                ForEach(weekdaySymbols(), id: \.self) { s in
-                    Text(s).font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            .padding(.vertical)
             
-            //MARK: -  Grid
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 7), spacing: 20) {
-                ForEach(daysGrid.indices, id: \.self) { i in
-                    if let date = daysGrid[i] {
-                        DayCell(
-                            date: date,
-                            day: dayFor(date),
-                            onSelect: { onSelect(date) },
-                            onAddTodayMood: onAddTodayMood
-                        )
-                        .frame(height: 36)
-                    } else {
-                        Color.clear.frame(height:36)
+            ScrollView{
+                //MARK: - Weekday row
+                HStack {
+                    ForEach(weekdaySymbols(), id: \.self) { s in
+                        Text(s).font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity)
                     }
                 }
+                .padding(.vertical)
+                
+                //MARK: -  Grid
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 7), spacing: 20) {
+                    ForEach(daysGrid.indices, id: \.self) { i in
+                        if let date = daysGrid[i] {
+                            DayCell(
+                                date: date,
+                                day: dayFor(date),
+                                onSelect: {
+                                    selectedDate = date
+                                    onSelect(date) },
+                                onAddTodayMood: onAddTodayMood
+                            )
+                            .frame(height: 36)
+                        } else {
+                            Color.clear.frame(height:36)
+                        }
+                    }
+                }
+                .padding(.bottom)
+                
+                if let selected = selectedDate, let day = dayFor(selected) {
+                    ForEach(day.event, id: \.id){ event in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                
+                                Text("\(event.title)")
+                                let listAnimal = event.animal.map { $0.name }.joined(separator: ", ")
+                                                Text("\(listAnimal) sont en route !")
+                                
+                                HStack {
+                                    Circle().fill(event.type.color).frame(width: 10)
+                                    Text(selected.formatted(date: .abbreviated, time: .omitted))
+                                }
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 30).fill(event.type.color.opacity(0.5)))
+                        .padding()
+                        
+                        
+                    }
+                    
+                } else {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Il n'y a rien à cette date. Profite en pour faire une séance calin ou jouer avec tes animaux !")
+                                .font(.headline)
+                                .foregroundStyle(.secondary)
+                        }
+                        
+                    }
+                    .padding()
+                }
+
+                
             }
         }
     }
@@ -180,7 +224,7 @@ private struct DayCell: View {
                     ZStack {
                         
                         
-                        Circle().fill(Color.darkBrown)
+                        Circle().fill(d.event[0].type.color)
                         if isToday {
                             Circle()
                                 .inset(by: -3)
