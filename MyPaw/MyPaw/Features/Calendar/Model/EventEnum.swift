@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum EventEnum{
+enum EventEnum: CaseIterable{
     case vaccins, medicaments, toiletteur, rendezvous, autre
     
     var color: Color{

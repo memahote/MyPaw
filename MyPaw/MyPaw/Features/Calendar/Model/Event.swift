@@ -10,6 +10,7 @@ import Foundation
 struct Event: Identifiable{
     var id: UUID = UUID()
     var title: String
+    var description: String
     var type: EventEnum
     var animal: [AnimalProfile]
 }
