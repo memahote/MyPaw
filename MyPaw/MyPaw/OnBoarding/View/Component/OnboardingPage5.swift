@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingPage5: View {
-    @Binding var onboardingVM : OnboardingViewmodel
+    @Bindable var onboardingVM : OnboardingViewmodel
     var onFinish: () -> Void
  
     var body: some View {
@@ -80,7 +80,7 @@ struct OnboardingPage5: View {
     }
 }
 
-#Preview {
-    OnboardingPage5(onboardingVM: .constant(OnboardingViewmodel()), onFinish: {})
-
-}
+//#Preview {
+//    OnboardingPage5(onboardingVM: .constant(OnboardingViewmodel()), onFinish: {})
+//
+//}

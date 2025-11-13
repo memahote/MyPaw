@@ -8,20 +8,15 @@
 import SwiftUI
 
 struct OnboardingPage1: View {
-    @Binding var onboardingVM : OnboardingViewmodel
+    @Bindable var onboardingVM : OnboardingViewmodel
     
     var body: some View {
         ZStack{
 
-//            Image("imgOnboarding1")
-//                .resizable()
-//                .scaledToFill()
-//                .ignoresSafeArea()
-            
-            Color(.darkBrown)
-                .opacity(0.9)
-                .ignoresSafeArea()
-            
+                Color(.darkBrown)
+                    .opacity(0.9)
+                    .ignoresSafeArea()
+        
             VStack {
                 Spacer()
                 Text("On apprend à vous connaître")
@@ -63,11 +58,13 @@ struct OnboardingPage1: View {
                 }
                 .padding()
                 
-               Spacer()
+                Spacer()
                 
                 VStack {
                     ProgressBar(progress: CGFloat(onboardingVM.currentPage + 1) / 5.0)
+                       
                     
+                   
                     
                     HStack{
                         Spacer()
@@ -86,6 +83,6 @@ struct OnboardingPage1: View {
 }
 
 
-#Preview {
-    OnboardingPage1(onboardingVM: .constant(OnboardingViewmodel()))
-}
+//#Preview {
+//    OnboardingPage1(onboardingVM: .constant(OnboardingViewmodel()))
+//}
