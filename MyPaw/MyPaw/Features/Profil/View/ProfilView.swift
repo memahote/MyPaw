@@ -12,7 +12,7 @@ struct ProfilView: View {
     var body: some View {
         
         VStack{
-            Image(.imgForum3)
+            Image(.sam)
                 .resizable()
                 .scaledToFill()
                 .clipShape(
@@ -27,11 +27,11 @@ struct ProfilView: View {
                 .ignoresSafeArea()
 
                         
-            Text("Kiki de Montreuil")
+            Text("Sam")
                 .fontWeight(.bold)
                 .font(.system(size: 30))
                 .foregroundStyle(Color.orangeDeep)
-                .padding(.top, 20)
+                .padding(.top, 40)
             
             HStack(alignment: .top){
                 VStack{
@@ -166,7 +166,7 @@ struct ProfilView: View {
 
             }
             
-            Spacer(minLength: 50)
+//            Spacer(minLength: 60)
             
         }.background(Color.whiteDirt)
         
