@@ -27,7 +27,7 @@ struct ProfilView: View {
                 .ignoresSafeArea()
 
                         
-            Text(animalProfil.name)
+            Text("Kiki de Montreuil")
                 .fontWeight(.bold)
                 .font(.system(size: 30))
                 .foregroundStyle(Color.orangeDeep)
