@@ -64,8 +64,6 @@ struct OnboardingPage1: View {
                 .padding()
                 
                Spacer()
-                //Valeur a changer
-                ProgressBar(progress: 0.5)
                 
                 VStack {
                     ProgressBar(progress: CGFloat(onboardingVM.currentPage + 1) / 5.0)
