@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8DD32572EC608CC0043C3B7 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = B8DD32562EC608CC0043C3B7 /* KeychainAccess */; };
 		C65105D62EC5E08600974C54 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65105D52EC5E08600974C54 /* WidgetKit.framework */; };
 		C65105D82EC5E08600974C54 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65105D72EC5E08600974C54 /* SwiftUI.framework */; };
 		C65105E92EC5E08600974C54 /* MyPawWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C65105D32EC5E08600974C54 /* MyPawWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -100,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8DD32572EC608CC0043C3B7 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +185,7 @@
 			);
 			name = MyPaw;
 			packageProductDependencies = (
+				B8DD32562EC608CC0043C3B7 /* KeychainAccess */,
 			);
 			productName = MyPaw;
 			productReference = B8DD27B52EC482AB0043C3B7 /* MyPaw.app */;
@@ -292,6 +295,7 @@
 			mainGroup = B8DD27AC2EC482AB0043C3B7;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				B8DD32552EC608CC0043C3B7 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8DD27B62EC482AB0043C3B7 /* Products */;
@@ -761,6 +765,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B8DD32552EC608CC0043C3B7 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B8DD32562EC608CC0043C3B7 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B8DD32552EC608CC0043C3B7 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8DD27AD2EC482AB0043C3B7 /* Project object */;
 }
