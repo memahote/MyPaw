@@ -60,3 +60,17 @@ struct OnboardingView: View {
 #Preview {
     OnboardingView(onboardingVM: OnboardingViewmodel(), animalData: AnimalDataViewModel())
 }
+
+
+
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+
+    func onTapOutsideToDismissKeyboard() -> some View {
+        self.onTapGesture {
+            hideKeyboard()
+        }
+    }
+}

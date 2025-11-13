@@ -64,7 +64,7 @@ struct catzFineFood: View {
                     ProgressBarCustom(total: 75)
                     HStack{
                         Spacer()
-                        Text("25/100")
+                        Text("75/100")
                             .padding(.horizontal, 50)
                             .foregroundStyle(Color.darkBrown)
                     }

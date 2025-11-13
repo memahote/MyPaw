@@ -50,6 +50,7 @@ struct RegisterView: View {
                         .foregroundStyle(.orangeMid)
                 }
             }
+            .onTapOutsideToDismissKeyboard()
             .padding(.horizontal)
             .frame(width: 285, height: 400)
             .background(
