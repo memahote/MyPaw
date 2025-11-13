@@ -35,7 +35,7 @@ struct CalendarCustomView: View {
                         } else {
                             detailDay = nil
                         }
-                    }
+                    }, addEvent: $addEvent
                 )
                 
                 Spacer()
@@ -45,17 +45,7 @@ struct CalendarCustomView: View {
             VStack{
                 Spacer()
                 
-                Button(action: {
-                    addEvent.toggle()
-                }, label: {
-                    Text("Ajouter")
-                        .padding()
-                        .background(.orangeDeep)
-                        .foregroundStyle(.whiteDirt)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        
-                })
-                .padding()
+               
             }
             
             if addEvent{
