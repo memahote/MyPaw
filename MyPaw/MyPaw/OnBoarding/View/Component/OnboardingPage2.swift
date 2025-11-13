@@ -84,7 +84,9 @@ struct OnboardingPage2: View {
 
                 }
             }
-            .onTapOutsideToDismissKeyboard()
+            .onTapGesture {
+                UIApplication.shared.hideKeyboard()
+            }
         }
     }
 }
