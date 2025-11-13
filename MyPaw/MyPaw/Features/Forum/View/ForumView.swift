@@ -3,6 +3,7 @@ import SwiftUI
 struct ForumsView: View {
     @State private var viewModel = ForumViewModel()
     
+    
     var body: some View {
         NavigationStack {
             ScrollView {

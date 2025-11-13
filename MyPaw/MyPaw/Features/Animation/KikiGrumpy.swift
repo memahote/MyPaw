@@ -34,7 +34,7 @@ struct KikiGrumpyBobble: View {
                     headTilt = 5 // angle de rotation
                 }
         }
-        .frame(width: 200, height: 250)
+        .frame(width: 100, height: 150)
     }
 }
 

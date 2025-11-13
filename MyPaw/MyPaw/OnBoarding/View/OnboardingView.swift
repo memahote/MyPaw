@@ -39,6 +39,7 @@ struct OnboardingView: View {
                     
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
+    
                 
                 
                 
@@ -63,14 +64,14 @@ struct OnboardingView: View {
 
 
 
-extension View {
+extension UIApplication {
     func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from:nil, for: nil)
     }
 
-    func onTapOutsideToDismissKeyboard() -> some View {
-        self.onTapGesture {
-            hideKeyboard()
-        }
-    }
+//    func onTapOutsideToDismissKeyboard() -> some View {
+//        self.onTapGesture {
+//            hideKeyboard()
+//        }
+//    }
 }

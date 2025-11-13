@@ -10,17 +10,45 @@ import SwiftUI
 // MARK: - Composant pour la bannière mise en avant
 struct BannerCard: View {
     let guide: GuideItem
+    @State private var headTilt: CGFloat = 0
+    @State private var bobUp: Bool = false
     
     var body: some View {
         NavigationLink(destination: GuideDetailView(guide: guide)) {
             HStack {
-                Image("kiki")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 130)
-                    .rotationEffect(.degrees(360))
-                    .cornerRadius(12)
-                    .padding(.trailing, 10)
+//                Image("kiki")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(height: 130)
+//                    .rotationEffect(.degrees(360))
+//                    .cornerRadius(12)
+//                    .padding(.trailing, 10)
+                
+                ZStack {
+                    // Corps du chat
+                    Image("kikiBody")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100)
+                        .offset(y: 10)
+
+                    // Tête du chat
+                    Image("kikiGrumpy")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                        .offset(x: -20, y: -50) // ajustement
+                        .rotationEffect(.degrees(headTilt))
+                        .animation(
+                            .easeInOut(duration: 1.5)
+                                .repeatForever(autoreverses: true),
+                            value: headTilt
+                        )
+                        .onAppear {
+                            headTilt = 5 // angle de rotation
+                        }
+                }
+                .frame(width: 100, height: 150)
                 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(guide.title)
