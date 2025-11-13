@@ -17,6 +17,7 @@ struct CalendarMonth: View {
     @Environment(\.calendar) private var calendar
     @Environment(\.locale) private var locale
     @State var legend: Bool = false
+    @Binding var addEvent : Bool
     
     private var daysGrid: [Date?] {
         let cal = calendar
@@ -205,7 +206,17 @@ struct CalendarMonth: View {
                     }
                     
                     
-                    
+                    Button(action: {
+                        addEvent.toggle()
+                    }, label: {
+                        Text("Ajouter")
+                            .padding()
+                            .background(.orangeDeep)
+                            .foregroundStyle(.whiteDirt)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            
+                    })
+                    .padding()
                 }
                 
                 
