@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C65105D62EC5E08600974C54 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65105D52EC5E08600974C54 /* WidgetKit.framework */; };
+		C65105D82EC5E08600974C54 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65105D72EC5E08600974C54 /* SwiftUI.framework */; };
+		C65105E92EC5E08600974C54 /* MyPawWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C65105D32EC5E08600974C54 /* MyPawWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B8DD27C32EC482AD0043C3B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +27,47 @@
 			remoteGlobalIDString = B8DD27B42EC482AB0043C3B7;
 			remoteInfo = MyPaw;
 		};
+		C65105E72EC5E08600974C54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8DD27AD2EC482AB0043C3B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C65105D22EC5E08600974C54;
+			remoteInfo = MyPawWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C65105EE2EC5E08600974C54 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C65105E92EC5E08600974C54 /* MyPawWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B8DD27B52EC482AB0043C3B7 /* MyPaw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPaw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DD27C22EC482AD0043C3B7 /* MyPawTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPawTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DD27CC2EC482AD0043C3B7 /* MyPawUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPawUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C65105D32EC5E08600974C54 /* MyPawWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyPawWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C65105D52EC5E08600974C54 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C65105D72EC5E08600974C54 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C65105EA2EC5E08600974C54 /* Exceptions for "MyPawWidget" folder in "MyPawWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = C65105D22EC5E08600974C54 /* MyPawWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B8DD27B72EC482AB0043C3B7 /* MyPaw */ = {
@@ -43,6 +83,14 @@
 		B8DD27CF2EC482AD0043C3B7 /* MyPawUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MyPawUITests;
+			sourceTree = "<group>";
+		};
+		C65105D92EC5E08600974C54 /* MyPawWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C65105EA2EC5E08600974C54 /* Exceptions for "MyPawWidget" folder in "MyPawWidgetExtension" target */,
+			);
+			path = MyPawWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +117,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C65105D02EC5E08600974C54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C65105D82EC5E08600974C54 /* SwiftUI.framework in Frameworks */,
+				C65105D62EC5E08600974C54 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +135,8 @@
 				B8DD27B72EC482AB0043C3B7 /* MyPaw */,
 				B8DD27C52EC482AD0043C3B7 /* MyPawTests */,
 				B8DD27CF2EC482AD0043C3B7 /* MyPawUITests */,
+				C65105D92EC5E08600974C54 /* MyPawWidget */,
+				C65105D42EC5E08600974C54 /* Frameworks */,
 				B8DD27B62EC482AB0043C3B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +147,18 @@
 				B8DD27B52EC482AB0043C3B7 /* MyPaw.app */,
 				B8DD27C22EC482AD0043C3B7 /* MyPawTests.xctest */,
 				B8DD27CC2EC482AD0043C3B7 /* MyPawUITests.xctest */,
+				C65105D32EC5E08600974C54 /* MyPawWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C65105D42EC5E08600974C54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C65105D52EC5E08600974C54 /* WidgetKit.framework */,
+				C65105D72EC5E08600974C54 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +171,12 @@
 				B8DD27B12EC482AB0043C3B7 /* Sources */,
 				B8DD27B22EC482AB0043C3B7 /* Frameworks */,
 				B8DD27B32EC482AB0043C3B7 /* Resources */,
+				C65105EE2EC5E08600974C54 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C65105E82EC5E08600974C54 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				B8DD27B72EC482AB0043C3B7 /* MyPaw */,
@@ -163,6 +234,28 @@
 			productReference = B8DD27CC2EC482AD0043C3B7 /* MyPawUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		C65105D22EC5E08600974C54 /* MyPawWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C65105EB2EC5E08600974C54 /* Build configuration list for PBXNativeTarget "MyPawWidgetExtension" */;
+			buildPhases = (
+				C65105CF2EC5E08600974C54 /* Sources */,
+				C65105D02EC5E08600974C54 /* Frameworks */,
+				C65105D12EC5E08600974C54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C65105D92EC5E08600974C54 /* MyPawWidget */,
+			);
+			name = MyPawWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = MyPawWidgetExtension;
+			productReference = C65105D32EC5E08600974C54 /* MyPawWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -183,6 +276,9 @@
 					B8DD27CB2EC482AD0043C3B7 = {
 						CreatedOnToolsVersion = 26.0.1;
 						TestTargetID = B8DD27B42EC482AB0043C3B7;
+					};
+					C65105D22EC5E08600974C54 = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
@@ -205,6 +301,7 @@
 				B8DD27B42EC482AB0043C3B7 /* MyPaw */,
 				B8DD27C12EC482AD0043C3B7 /* MyPawTests */,
 				B8DD27CB2EC482AD0043C3B7 /* MyPawUITests */,
+				C65105D22EC5E08600974C54 /* MyPawWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -225,6 +322,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B8DD27CA2EC482AD0043C3B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C65105D12EC5E08600974C54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,6 +359,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C65105CF2EC5E08600974C54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -267,6 +378,11 @@
 			isa = PBXTargetDependency;
 			target = B8DD27B42EC482AB0043C3B7 /* MyPaw */;
 			targetProxy = B8DD27CD2EC482AD0043C3B7 /* PBXContainerItemProxy */;
+		};
+		C65105E82EC5E08600974C54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C65105D22EC5E08600974C54 /* MyPawWidgetExtension */;
+			targetProxy = C65105E72EC5E08600974C54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -536,6 +652,66 @@
 			};
 			name = Release;
 		};
+		C65105EC2EC5E08600974C54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M23A99K3D7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyPawWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyPawWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.MyPaw.MyPawWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C65105ED2EC5E08600974C54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M23A99K3D7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyPawWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyPawWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.MyPaw.MyPawWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -571,6 +747,15 @@
 			buildConfigurations = (
 				B8DD27DD2EC482AD0043C3B7 /* Debug */,
 				B8DD27DE2EC482AD0043C3B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C65105EB2EC5E08600974C54 /* Build configuration list for PBXNativeTarget "MyPawWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C65105EC2EC5E08600974C54 /* Debug */,
+				C65105ED2EC5E08600974C54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
