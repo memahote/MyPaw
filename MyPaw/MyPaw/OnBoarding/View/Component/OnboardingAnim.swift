@@ -67,7 +67,7 @@ struct OnboardingAnim: View {
                 scale = 1
             }
             
-            withAnimation(.easeIn(duration: 0.3).delay(1.3)) {
+            withAnimation(.easeIn(duration: 0.3).delay(1.5)) {
                 showText = true
             }
         }
