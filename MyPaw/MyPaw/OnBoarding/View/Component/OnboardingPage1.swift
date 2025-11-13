@@ -78,6 +78,7 @@ struct OnboardingPage1: View {
                     
                 }
             }
+            .onTapOutsideToDismissKeyboard()
         }
     }
 }

@@ -70,6 +70,7 @@ struct LoginView: View {
                 }
                 
             }
+            .onTapOutsideToDismissKeyboard()
             .padding(.horizontal)
             .frame(width: 285, height: 400)
             .background(
