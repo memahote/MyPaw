@@ -62,6 +62,7 @@ struct OnboardingPage4: View {
 
                 }
             }
+            .onTapOutsideToDismissKeyboard()
         }
     }
 }
