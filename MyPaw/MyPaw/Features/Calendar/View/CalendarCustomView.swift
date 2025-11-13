@@ -12,6 +12,7 @@ struct CalendarCustomView: View {
     @State private var selectedDate: Date?
     @State var vm = DaysViewModel()
     @State private var detailDay: DayModel?
+    @State var addEvent: Bool = false
     var body: some View {
         ZStack{
             
@@ -40,6 +41,31 @@ struct CalendarCustomView: View {
                 Spacer()
             }
            
+            
+            VStack{
+                Spacer()
+                
+                Button(action: {
+                    addEvent.toggle()
+                }, label: {
+                    Text("Ajouter")
+                        .padding()
+                        .background(.orangeDeep)
+                        .foregroundStyle(.whiteDirt)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        
+                })
+                .padding()
+            }
+            
+            if addEvent{
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        addEvent.toggle()
+                    }
+                AddEventPopUp(dayVM: $vm, popup: $addEvent)
+            }
         }
         
         

@@ -16,6 +16,7 @@ struct CalendarMonth: View {
     @State var selectedDate: Date? = Date.now
     @Environment(\.calendar) private var calendar
     @Environment(\.locale) private var locale
+    @State var legend: Bool = false
     
     private var daysGrid: [Date?] {
         let cal = calendar
@@ -48,139 +49,176 @@ struct CalendarMonth: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            //MARK: - Header
-            
-            //si temps : faire en sorte qu'on puisse le drag plutôt que de devoir appuyer sur des boutons
-            HStack {
-                Button { shiftMonth(-1) } label: {
-                    Image(systemName: "chevron.left").font(.headline)
-                }
-                Spacer()
-                VStack{
-                    Text(monthTitle)
-                        .font(.system(size: 22, weight: .semibold))
-                    Text(yearTitle)
-                        .font(.system(size: 22, weight: .semibold))
-                    
-                }
-                Spacer()
+        ZStack{
+            VStack(alignment: .leading, spacing: 0) {
+                //MARK: - Header
                 
-                Button { shiftMonth(+1) } label: {
-                    Image(systemName: "chevron.right").font(.headline)
+                //si temps : faire en sorte qu'on puisse le drag plutôt que de devoir appuyer sur des boutons
+                HStack {
+                    Button { shiftMonth(-1) } label: {
+                        Image(systemName: "chevron.left").font(.headline)
+                    }
+                    Spacer()
+                    VStack{
+                        Text(monthTitle)
+                            .font(.system(size: 22, weight: .semibold))
+                        Text(yearTitle)
+                            .font(.system(size: 22, weight: .semibold))
+                        
+                    }
+                    Spacer()
+                    
+                    Button { shiftMonth(+1) } label: {
+                        Image(systemName: "chevron.right").font(.headline)
+                    }
                 }
-            }
-            .foregroundStyle(.black)
-            .padding(.horizontal)
-            
-            
-            HStack{
-                Image(.kiki)
-                    .resizable()
-                    .scaledToFit()
-                    
-                    
-                ZStack{
-                    Image(.bulleMessage)
-                        .offset(x:-40, y:-5)
-
-                    Text("Changez régulièrement l’eau de votre animal et surveillez son appétit : c’est un bon indicateur de son bien-être.")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.whiteDirt)
-                        .frame(width: 150)
-                        .offset(y:-5)
-                    
-                            
-                }
-            }
-            .padding()
-            .offset(x:40)
-            
-            
-            HStack{
-                Spacer()
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "info.circle")
+                .foregroundStyle(.black)
+                .padding(.horizontal)
+                
+                
+                HStack{
+                    Image(.kiki)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 50, height: 50)
-                        .foregroundStyle(.orangeMid)
-                        .padding()
-                })
-                
                     
-            }
-            
-            ScrollView{
-                //MARK: - Weekday row
-                HStack {
-                    ForEach(weekdaySymbols(), id: \.self) { s in
-                        Text(s).font(.system(size: 13, weight: .semibold))
-                            .foregroundStyle(.secondary)
-                            .frame(maxWidth: .infinity)
-                    }
-                }
-                .padding(.vertical)
-                
-                //MARK: -  Grid
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 7), spacing: 20) {
-                    ForEach(daysGrid.indices, id: \.self) { i in
-                        if let date = daysGrid[i] {
-                            DayCell(
-                                date: date,
-                                day: dayFor(date),
-                                onSelect: {
-                                    selectedDate = date
-                                    onSelect(date) },
-                                onAddTodayMood: onAddTodayMood
-                            )
-                            .frame(height: 36)
-                        } else {
-                            Color.clear.frame(height:36)
-                        }
-                    }
-                }
-                .padding(.bottom)
-                
-                if let selected = selectedDate, let day = dayFor(selected) {
-                    ForEach(day.event, id: \.id){ event in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                
-                                Text("\(event.title)")
-                                let listAnimal = event.animal.map { $0.name }.joined(separator: ", ")
-                                                Text("\(listAnimal) sont en route !")
-                                
-                                HStack {
-                                    Circle().fill(event.type.color).frame(width: 10)
-                                    Text(selected.formatted(date: .abbreviated, time: .omitted))
-                                }
-                            }
-                            
-                            Spacer()
-                        }
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 30).fill(event.type.color.opacity(0.5)))
-                        .padding()
+                    
+                    ZStack{
+                        Image(.bulleMessage)
+                            .offset(x:-40, y:-5)
+                        
+                        Text("Changez régulièrement l’eau de votre animal et surveillez son appétit : c’est un bon indicateur de son bien-être.")
+                            .font(.system(size: 12))
+                            .foregroundStyle(.whiteDirt)
+                            .frame(width: 150)
+                            .offset(y:-5)
                         
                         
                     }
+                }
+                .padding()
+                .offset(x:40)
+                
+                
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        legend.toggle()
+                    }, label: {
+                        Image(systemName: "info.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .foregroundStyle(.orangeMid)
+                            .padding()
+                    })
                     
-                } else {
+                    
+                }
+                
+                
+                ScrollView{
+                    //MARK: - Weekday row
                     HStack {
-                        VStack(alignment: .leading) {
-                            Text("Il n'y a rien à cette date. Profite en pour faire une séance calin ou jouer avec tes animaux !")
-                                .font(.headline)
+                        ForEach(weekdaySymbols(), id: \.self) { s in
+                            Text(s).font(.system(size: 13, weight: .semibold))
                                 .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity)
                         }
-                        
                     }
                     .padding()
+                    
+                    //MARK: -  Grid
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 7), spacing: 20) {
+                        ForEach(daysGrid.indices, id: \.self) { i in
+                            if let date = daysGrid[i] {
+                                DayCell(
+                                    date: date,
+                                    day: dayFor(date),
+                                    onSelect: {
+                                        selectedDate = date
+                                        onSelect(date) },
+                                    onAddTodayMood: onAddTodayMood
+                                )
+                                .frame(height: 36)
+                            } else {
+                                Color.clear.frame(height:36)
+                            }
+                        }
+                    }
+                    .padding(.bottom)
+                    .padding(.horizontal)
+                    
+                    if let selected = selectedDate, let day = dayFor(selected) {
+                        ForEach(day.event, id: \.id){ event in
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    
+                                    
+                                    Text("\(event.title)")
+                                        .font(.title3)
+                                    
+                                    HStack{
+                                        ForEach(event.animal){ animal in
+                                            HStack{
+                                                Circle().fill(.pinkNose)
+                                                    .frame(width: 10)
+                                                
+                                                Text(animal.name)
+                                            }
+                                            .padding(5)
+                                            .padding(.horizontal, 3)
+                                            .background(Color.whiteDirt)
+                                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                                        }
+                                    }
+                                    
+                                    
+                                    Text("\(event.description)")
+                                        .padding(.vertical)
+                                    
+                                    HStack {
+                                        Circle().fill(event.type.color).frame(width: 10)
+                                        Text(selected.formatted(date: .abbreviated, time: .omitted))
+                                    }
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 30).fill(event.type.color.opacity(0.5)))
+                            .padding()
+                            .id(event.id)
+                            
+                            
+                        }
+                        
+                    } else {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Il n'y a rien à cette date. Profite en pour faire une séance calin ou jouer avec tes animaux !")
+                                    .font(.headline)
+                                    .foregroundStyle(.secondary)
+                            }
+                            
+                        }
+                        .padding()
+                    }
+                    
+                    
+                    
                 }
-
                 
+                
+                
+            }
+            
+            if legend{
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        legend.toggle()
+                    }
+                PopUpLegendeView()
             }
         }
     }

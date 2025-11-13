@@ -23,6 +23,7 @@ struct ContentView: View {
     
     
     var body: some View {
+
         
         Group {
             let _ = print("1er print \(authVM.isRegister) et  \(showOnboarding)")
@@ -68,6 +69,7 @@ struct ContentView: View {
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .environment(animalData)
             .environment(authVM)
+
         }
     }
 }
