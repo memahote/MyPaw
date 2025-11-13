@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfilView: View {
+    @State var animalProfil = AnimalProfile()
     var body: some View {
         
         VStack{
@@ -26,7 +27,7 @@ struct ProfilView: View {
                 .ignoresSafeArea()
 
                         
-            Text("Kiki de Montreuil")
+            Text(animalProfil.name)
                 .fontWeight(.bold)
                 .font(.system(size: 30))
                 .foregroundStyle(Color.orangeDeep)
