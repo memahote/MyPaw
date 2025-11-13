@@ -116,48 +116,6 @@ struct MainTabView: View {
     }
 }
 
-// MARK: - Vues de démonstration (à remplacer par tes vraies vues)
-//struct ProfilView: View {
-//    var body: some View {
-//        ZStack {
-//            Color.blue.opacity(0.1).ignoresSafeArea()
-//            Text("Profil View")
-//                .font(.largeTitle)
-//        }
-//    }
-//}
-
-//struct ScannerView: View {
-//    var body: some View {
-//        ZStack {
-//            Color.green.opacity(0.1).ignoresSafeArea()
-//            Text("Scanner View")
-//                .font(.largeTitle)
-//        }
-//    }
-//}
-//
-//struct PlanningView: View {
-//    var body: some View {
-//        ZStack {
-//            Color.orange.opacity(0.1).ignoresSafeArea()
-//            Text("Planning View")
-//                .font(.largeTitle)
-//        }
-//    }
-//}
-//
-//struct ForumView: View {
-//    var body: some View {
-//        ZStack {
-//            Color.purple.opacity(0.1).ignoresSafeArea()
-//            Text("Forum View")
-//                .font(.largeTitle)
-//        }
-//    }
-//}
-
-// MARK: - Preview
 #Preview {
     MainTabView()
 }

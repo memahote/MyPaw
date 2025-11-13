@@ -33,11 +33,42 @@ struct ContentView: View {
                 if authVM.isRegister && showOnboarding {
                     OnboardingView(onboardingVM: onboardingVM, animalData: animalData)
                 } else {
-                    TestDataView(animalData: animalData, authVM: authVM)
+                    MainTabViewWithData(animalData: animalData, authVM: authVM)
                 }
             }
         }
         .animation(.easeInOut, value: authVM.isLoggedIn)
+    }
+    // MARK: - Main Tab Container avec données
+    struct MainTabViewWithData: View {
+        @State private var selectedTab: TabItem = .calendar
+        var animalData: AnimalDataViewModel
+        var authVM: AuthViewModel
+        
+        var body: some View {
+            ZStack(alignment: .bottom) {
+                // Content selon l'onglet sélectionné
+                Group {
+                    switch selectedTab {
+                    case .profil:
+                        ProfilView()
+                    case .scanner:
+                        YukaScannerView()
+                    case .calendar:
+                        CalendarCustomView()
+                    case .forum:
+                        ForumsView()
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                // TabBar personnalisée
+                CustomTabBar(selectedTab: $selectedTab)
+            }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .environment(animalData)
+            .environment(authVM)
+        }
     }
 }
 
