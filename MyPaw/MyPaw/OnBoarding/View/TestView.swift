@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TestDataView: View {
     @Bindable var animalData: AnimalDataViewModel
+    @Bindable var authVM: AuthViewModel
+    @State var animaData = AnimalDataViewModel()
     
     var body: some View {
         VStack(spacing: 20) {
@@ -28,11 +30,15 @@ struct TestDataView: View {
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)
             }
+            
+            NextButton(text: "LogOut") {
+                authVM.logout()
+            }
         }
         .padding()
     }
 }
 
 #Preview {
-    TestDataView(animalData: AnimalDataViewModel())
+    TestDataView(animalData: AnimalDataViewModel(), authVM: AuthViewModel())
 }

@@ -2,6 +2,9 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+# Ignorer les données locales de l’espace de travail Xcode
+MyPaw/MyPaw.xcodeproj/project.xcworkspace/xcshareddata/
+
 ## User settings
 xcuserdata/
 

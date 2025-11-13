@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingPage2: View {
-    @Binding var onboardingVM : OnboardingViewmodel
+    @Bindable var onboardingVM : OnboardingViewmodel
     
     var body: some View {
         ZStack{
@@ -88,6 +88,6 @@ struct OnboardingPage2: View {
     }
 }
 
-#Preview {
-    OnboardingPage2(onboardingVM: .constant(OnboardingViewmodel()))
-}
+//#Preview {
+//    OnboardingPage2(onboardingVM: .constant(OnboardingViewmodel()))
+//}
